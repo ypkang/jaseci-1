@@ -85,3 +85,11 @@ class jac_tests(TestCaseHelper, TestCase):
         lday_walk.run()
         day = jeu(lday_walk.context['day_node'], self.gph)
         self.assertGreater(len(day.edge_ids), 3)
+
+    def test_highlight(self):
+        """test highlight features"""
+        self.logger_on()
+        self.sent.register_code(jtc.ll_proto)
+        gen_walker = self.sent.walker_ids.get_obj_by_name('init_highlight_test')
+        gen_walker.prime(self.gph)
+        gen_walker.run()
