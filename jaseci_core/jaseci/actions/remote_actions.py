@@ -2,6 +2,7 @@
 General action base class with automation for hot loading
 """
 from jaseci.utils.utils import logger
+from jaseci.utils.utils import TestCaseHelper as TCH
 from fastapi import FastAPI
 from pydantic import validate_arguments
 from time import time
@@ -78,3 +79,12 @@ def assimilate_action(func, act_group, aliases, caller_globals):
 
 def launch_server(port=80, host='0.0.0.0'):
     uvicorn.run(app, port=port, host=host)
+
+
+class TestCaseHelper(TCH):
+    """Helper for testing remote jaseci actions"""
+
+    def setUp(self):
+        from fastapi.testclient import TestClient
+        self.client = TestClient(app)
+        return TCH.setUp(self)
