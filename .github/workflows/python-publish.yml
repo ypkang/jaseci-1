@@ -8,11 +8,10 @@
 
 name: Upload Python Package
 
-on: workflow_dispatch
-# on:
-#   push:
-#     tags:        
-#       - '*'
+on:
+  push:
+    tags:        
+      - '*'
       
 jobs:
   push_jaseci_core_to_pypi:
@@ -31,7 +30,7 @@ jobs:
         pip install setuptools wheel twine
         pip install build
         
-    - name: B
+    - name: Push to pypi
       env: 
         TWINE_USERNAME: __token__
         TWINE_PASSWORD: ${{ secrets.TEST_PYPI_API_TOKEN }}
@@ -56,7 +55,7 @@ jobs:
         pip install setuptools wheel twine
         pip install build
         
-    - name: B
+    - name: Push to pypi
       env: 
         TWINE_USERNAME: __token__
         TWINE_PASSWORD: ${{ secrets.TEST_PYPI_API_TOKEN }}
@@ -64,4 +63,3 @@ jobs:
         cd jaseci_serv
         python3 -m build
         python3 -m twine upload --repository testpypi dist/*
-
