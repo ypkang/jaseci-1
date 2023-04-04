@@ -10,9 +10,9 @@ import copy
 barWidth = 0.1
 
 # set height of bar
-TRACES = ["dynamic"]
-MEM = "8g"
-RESULT_DIR = f"dynamic_regular_eval_no_queue_mem_{MEM}"
+# TRACES = ["dynamic"]
+# MEM = "8g"
+# RESULT_DIR = f"dynamic_regular_eval_no_queue_mem_{MEM}"
 
 TECH = [
     "default",
